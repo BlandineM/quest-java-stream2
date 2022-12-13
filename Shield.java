@@ -12,8 +12,11 @@ public class Shield {
         names.add("Leopold Fitz");
         names.add("Jemma Simmons");
 
-        // TODO 1 : map names to agents list
-        List<Agent> agents = new ArrayList<>();
+        List<Agent> agents = names.stream()
+                .map(item -> {
+                    String[] words = item.split(" ");
+                    return new Agent(words[0], words[1]);})
+                .collect(Collectors.toList());
 
         showAgents(agents);
     }
